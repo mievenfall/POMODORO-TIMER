@@ -42,7 +42,18 @@ function start() {
         if(seconds == 0) {
             workMinutes = workMinutes - 1;
             if(workMinutes <= -1) {
-                if(breakCount % 2 == 0) {
+                if(breakCount % 4 == 0) {
+                    //start break
+                    workMinutes = breakMinutes + 10;
+                    breakCount++;
+
+                    //change the panel
+                    setTimeout(function() {
+                        workTitle.classList.remove('active');
+                        breakTitle.classList.add('active');
+                    }, 1)
+                    
+                }else if (breakCount % 2 == 0) {
                     //start break
                     workMinutes = breakMinutes;
                     breakCount++;
@@ -51,8 +62,7 @@ function start() {
                     setTimeout(function() {
                         workTitle.classList.remove('active');
                         breakTitle.classList.add('active');
-                    }, 1000)
-                    
+                    }, 1)
                 }else { //continue work
                     workMinutes = workTime;
                     breakCount++;
@@ -61,15 +71,14 @@ function start() {
                     setTimeout(function() {
                         breakTitle.classList.remove('active');
                         workTitle.classList.add('active');
-                    }, 1000)
+                    }, 1)
                     
                 }
             }
-            workMinutes = 24;
             seconds = 59;
         }
     }
     
     //start countdown
-    setInterval(timerFunction, 1000);
+    setInterval(timerFunction, 1);
 }
