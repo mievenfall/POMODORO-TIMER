@@ -19,33 +19,43 @@
 </head>
 <body>
     <section>
-        <div class="container">
-            <h1>POMODORO TIMER</h1>
-
-            <div class="panel">
-                <p id="work">work</p>
-                <p id="break">break</p>
-            </div>
-
-            <div class="timer">
-                <div class="circle">
-                    <div class="time">
-                        <p id="minutes"></p>
-                        <p>:</p>
-                        <p id="seconds"></p>
+        <div class="tab">
+            <button class="tablinks" onclick="openTimer(event, 'pomodoro')">Pomodoro</button>
+            <button class="tablinks" onclick="openTimer(event, 'custom')">Custom</button>
+        </div>
+    
+        <div id="pomodoro" class="tabcontent">
+            <div class="container">
+                <h1>POMODORO TIMER</h1>
+    
+                <div class="panel">
+                    <p id="work">work</p>
+                    <p id="break">break</p>
+                </div>
+    
+                <div class="timer">
+                    <div class="circle">
+                        <div class="time">
+                            <p id="minutes"></p>
+                            <p>:</p>
+                            <p id="seconds"></p>
+                        </div>
                     </div>
                 </div>
-                
-            </div>
+    
+                <div class="control">
+                    <button id="start" onClick="start()"><i class="fa-solid fa-play"></i></button>
+    
+                    <a id="reset" href="./"><i class="fa-solid fa-rotate-left"></i></a>
+                </div>
+            </div>  
+        </div>
 
-            <div class="control">
-                <button id="start" onClick="start()"><i class="fa-solid fa-play"></i></button>
-
-                <a id="reset" href="./"><i class="fa-solid fa-rotate-left"></i></a>
-            </div>
-        </div>  
-
+        <div id="custom" class="tabcontent">
+        
+        </div>
     </section>
+
 
     <!-- SCRIPT -->
     <script src="./script.js"></script>

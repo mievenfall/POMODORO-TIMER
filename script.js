@@ -1,3 +1,20 @@
+function openTimer(evt, timerName) {
+    var i, tabcontent, tablinks;
+
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    document.getElementById(timerName).style.display ="block";
+    evt.currentTarget.className += " active";
+}
+
 //variable
 let workTitle = document.getElementById('work');
 let breakTitle = document.getElementById('break');
@@ -28,7 +45,7 @@ function start() {
     let workMinutes = workTime - 1;
     let breakMinutes = breakTime - 1;
 
-    breakCount = 0;
+    breakCount =0;
 
     //countdown
     let timerFunction = () => {
@@ -42,7 +59,7 @@ function start() {
         if(seconds == 0) {
             workMinutes = workMinutes - 1;
             if(workMinutes <= -1) {
-                if(breakCount % 4 == 0) {
+                if((breakCount != 0) && (breakCount % 8 == 0)) {
                     //start break
                     workMinutes = breakMinutes + 10;
                     breakCount++;
