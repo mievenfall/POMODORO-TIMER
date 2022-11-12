@@ -1,3 +1,11 @@
+function openNav() {
+    document.getElementById("mySideNav").style.width = "250px";
+  }
+
+function closeNav() {
+    document.getElementById("mySideNav").style.width = "0";
+}
+
 function openTimer(evt, timerName) {
     var i, tabcontent, tablinks;
 
@@ -32,8 +40,10 @@ window.onload = () => {
     workTitle.classList.add('active');
 }
 
+var check = null;
+
 //timer start
-function start() {
+function startTimer() {
     //change button
     document.getElementById('start').style.display = "none";
     document.getElementById('reset').style.display = "block";
@@ -97,5 +107,25 @@ function start() {
     }
     
     //start countdown
-    setInterval(timerFunction, 1);
+    check = setInterval(timerFunction, 1);
+}
+
+function stopTimer() {
+    clearInterval(check);
+    document.getElementById("minutes").innerHTML = "00";
+    document.getElementById("seconds").innerHTML = "00";
+    document.getElementById('start').style.display = "block";
+    document.getElementById('reset').style.display = "none";
+}
+
+function increaseWork() {
+    custom_workTime = document.getElementById("custom_minutes").innerHTML;
+    custom_workTime++;
+    document.getElementById("custom_minutes").innerHTML = custom_workTime;
+}
+
+function decreaseWork() {
+    custom_workTime = document.getElementById("custom_minutes").innerHTML;
+    custom_workTime--;
+    document.getElementById("custom_minutes").innerHTML = custom_workTime;
 }

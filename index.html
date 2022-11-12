@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pomodora Timer Sample</title>
+    <title>Pomodoro Timer Sample</title>
 
     <!-- FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,41 +19,111 @@
 </head>
 <body>
     <section>
-        <div class="tab">
-            <button class="tablinks" onclick="openTimer(event, 'pomodoro')">Pomodoro</button>
-            <button class="tablinks" onclick="openTimer(event, 'custom')">Custom</button>
+        <div id="mySideNav" class="sideNav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <div class="tab">
+                <button class="tablinks" onclick="openTimer(event, 'pomodoro'); closeNav()">Pomodoro</button>
+                <button class="tablinks" onclick="openTimer(event, 'custom'); closeNav(); stopTimer()">Custom</button>
+            </div>
         </div>
     
-        <div id="pomodoro" class="tabcontent">
-            <div class="container">
-                <h1>POMODORO TIMER</h1>
+        <div id="main">
+            <span id="navButton" onclick="openNav()">&#9776;</span>
+            <div id="pomodoro" class="tabcontent">
+                <div class="container">
+                    <h1>POMODORO TIMER</h1>
+        
+                    <div class="panel">
+                        <p id="work">work</p>
+                        <p id="break">break</p>
+                    </div>
+        
+                    <div class="timer">
+                        <div class="circle">
+                            <div class="time">
+                                <p id="minutes"></p>
+                                <p>:</p>
+                                <p id="seconds"></p>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="control">
+                        <button id="start" onClick="startTimer()"><i class="fa-solid fa-play"></i></button>
+                        <button id="reset" onClick="stopTimer()"><i class="fa-solid fa-rotate-left"></i></button>
+                    </div>
+                </div>  
+            </div>
     
-                <div class="panel">
-                    <p id="work">work</p>
-                    <p id="break">break</p>
-                </div>
-    
-                <div class="timer">
-                    <div class="circle">
-                        <div class="time">
-                            <p id="minutes"></p>
-                            <p>:</p>
-                            <p id="seconds"></p>
+            <div id="custom" class="tabcontent">
+                <div class="container">
+                    <h1>CUSTOM TIMER</h1>
+
+                    <div class="customization">
+                        <div class="custom_work">
+                            <div class="title">
+                                <h2>work</h2>
+                            </div>
+                            <div class="custom_time">
+                                <p id="custom_minutes">00</p>
+                                <p>:</p>
+                                <p id="custom_seconds">00</p>
+                            </div>
+                            <div class="custom_button">
+                                <button id="up" onClick="increaseWork()"><i class="fa-solid fa-square-caret-up"></i></button>
+                                <button id="down" onClick="decreaseWork()"><i class="fa-solid fa-square-caret-down"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="custom_break">
+                            <div class="title">
+                                <h2>break</h2>
+                            </div>
+                            <div class="custom_time">
+                                <p id="custom_minutes">00</p>
+                                <p>:</p>
+                                <p id="custom_seconds">00</p>
+                            </div>
+                            <div class="custom_button">
+                                <button id="up"><i class="fa-solid fa-square-caret-up"></i></button>
+                                <button id="down"><i class="fa-solid fa-square-caret-down"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="finish_setup">
+                            <button onClick="openTimer(event, 'customed')">DONE</button>
                         </div>
                     </div>
                 </div>
-    
-                <div class="control">
-                    <button id="start" onClick="start()"><i class="fa-solid fa-play"></i></button>
-    
-                    <a id="reset" href="./"><i class="fa-solid fa-rotate-left"></i></a>
-                </div>
-            </div>  
-        </div>
+            </div>
 
-        <div id="custom" class="tabcontent">
+            <div class="customed">
+                <div class="container">
+                    <h1>CUSTOM TIMER</h1>
         
+                    <div class="panel">
+                        <p id="work">work</p>
+                        <p id="break">break</p>
+                    </div>
+        
+                    <div class="timer">
+                        <div class="circle">
+                            <div class="time">
+                                <p id="minutes"></p>
+                                <p>:</p>
+                                <p id="seconds"></p>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="control">
+                        <button id="start" onClick="startTimer()"><i class="fa-solid fa-play"></i></button>
+                        <button id="reset" onClick="stopTimer()"><i class="fa-solid fa-rotate-left"></i></button>
+                    </div>
+                </div>
+            </div>
         </div>
+        
     </section>
 
 
